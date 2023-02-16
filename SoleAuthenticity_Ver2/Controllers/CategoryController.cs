@@ -58,7 +58,43 @@ namespace SoleAuthenticity_Ver2.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+        [HttpGet("cus/pagination", Name = "GetCategoriesVerCusWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<CategoryDtoVerCus>>>> GetCategoriesVerCusWithPagination([FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _categoryService.GetCategoriesVerCusWithPagination(page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
 
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+        [HttpGet("cus/pagination/count", Name = "CountCategoriesVerCusWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountCategoriesVerCusWithPagination()
+        {
+            try
+            {
+                var res = await _categoryService.CountCategoriesVerCusWithPagination();
+                return StatusCode((int)res.StatusCode, res);
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
         [HttpGet("category/{id}", Name = "GetCategoryById")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

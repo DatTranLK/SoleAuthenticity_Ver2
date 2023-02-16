@@ -22,6 +22,37 @@ namespace Service.Service
         {
             _brandRepository = brandRepository;
         }
+
+        public async Task<ServiceResponse<int>> CountAllBrandsVerCusWithPagination()
+        {
+            try
+            {
+                var count = await _brandRepository.CountAll(x => x.IsActive == true);
+                if (count <= 0)
+                {
+                    return new ServiceResponse<int>
+                    {
+                        Data = 0,
+                        Message = "Successfully",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<int>
+                {
+                    Data = count,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<int>> CountBrand()
         {
             try
@@ -104,6 +135,41 @@ namespace Service.Service
                     Message = "Successfully",
                     StatusCode = 204,
                     Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ServiceResponse<IEnumerable<BrandDtoVerCus>>> GetAllBrandsVerCusWithPagination(int page, int pageSize)
+        {
+            try
+            {
+                if (page <= 1)
+                {
+                    page = 1;
+                }
+                var lst = await _brandRepository.GetAllWithPagination(x => x.IsActive == true, null, x => x.Id, true, page, pageSize);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<BrandDtoVerCus>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<BrandDtoVerCus>>
+                    {
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<BrandDtoVerCus>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
                 };
             }
             catch (Exception ex)

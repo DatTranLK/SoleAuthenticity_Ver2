@@ -12,6 +12,8 @@ namespace Service.IService
     {
         Task<ServiceResponse<IEnumerable<BrandDto>>> GetAllBrandsWithPagination(int page, int pageSize);
         Task<ServiceResponse<IEnumerable<BrandDtoVerCus>>> GetBrandsVerCus();
+        Task<ServiceResponse<IEnumerable<BrandDtoVerCus>>> GetAllBrandsVerCusWithPagination(int page, int pageSize);
+        Task<ServiceResponse<int>> CountAllBrandsVerCusWithPagination();
         Task<ServiceResponse<int>> CountBrand();
         Task<ServiceResponse<BrandDto>> GetBrandById(int id);
         Task<ServiceResponse<string>> DisableOrEnableBrand(int id);

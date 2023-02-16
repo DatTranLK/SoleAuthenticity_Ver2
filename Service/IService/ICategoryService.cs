@@ -11,6 +11,8 @@ namespace Service.IService
     public interface ICategoryService
     {
         Task<ServiceResponse<IEnumerable<CategoryDto>>> GetCategoriesWithPagination(int page, int pageSize);
+        Task<ServiceResponse<IEnumerable<CategoryDtoVerCus>>> GetCategoriesVerCusWithPagination(int page, int pageSize);
+        Task<ServiceResponse<int>> CountCategoriesVerCusWithPagination();
         Task<ServiceResponse<CategoryDto>> GetCategoryById(int id);
         Task<ServiceResponse<int>> CountCategories();
         Task<ServiceResponse<string>> DisableOrEnableCategory(int id);
