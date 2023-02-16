@@ -33,10 +33,11 @@ namespace Service.Mapping
             CreateMap<New, NewDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Size, SizeDto>().ReverseMap();
-            CreateMap<ShoeCheck, ShoeCheckDtoForAdmin>().ReverseMap();
+            CreateMap<ShoeCheck, ShoeCheckDtoForAdmin>().ForMember(dto => dto.CustomerName, act => act.MapFrom(obj => obj.Customer.Name)).ReverseMap();
             CreateMap<ShoeCheck, ShoeCheckDtoForCustomer>().ReverseMap();
             CreateMap<ShoeCheck, ShoeCheckDtoForStaff>().ReverseMap();
             CreateMap<Review, ReviewDto>().ForMember(dto => dto.AuthorName, act => act.MapFrom(obj => obj.Staff.Name)).ReverseMap();
+            CreateMap<Review, ReviewDtoVerCusHomePage>().ReverseMap();
             CreateMap<Order, OrderDtoForCus>().ReverseMap();
             CreateMap<Order, OrderDtoForStaff>()
                 .ForMember(dto => dto.CustomerName, act => act.MapFrom(obj => obj.Customer.Name))

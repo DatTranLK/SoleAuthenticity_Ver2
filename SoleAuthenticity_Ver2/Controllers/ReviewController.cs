@@ -38,6 +38,23 @@ namespace SoleAuthenticity_Ver2.Controllers
                 throw new Exception(ex.Message);
             }
         }
+        [HttpGet("cus", Name = "GetReviewsVerCusInHomepage")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<ReviewDtoVerCusHomePage>>>> GetReviewsVerCusInHomepage()
+        {
+            try
+            {
+                var res = await _reviewService.GetReviewsVerCusInHomepage();
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
         [HttpGet("count", Name = "CountReviews")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

@@ -16,6 +16,9 @@ namespace Entity.Dtos.ShoeCheck
         public string StatusChecking { get; set; }
         public bool? IsAuthentic { get; set; }
         public int? CustomerId { get; set; }
+
+        public string? CustomerName { get; set; }
+
         public int? StaffId { get; set; }
         public bool? IsActive { get; set; }
     }
