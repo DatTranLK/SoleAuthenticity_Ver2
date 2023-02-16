@@ -53,6 +53,36 @@ namespace Service.Service
             }
         }
 
+        public async Task<ServiceResponse<int>> CountCategoriesVerCusWithPagination()
+        {
+            try
+            {
+                var count = await _categoryRepository.CountAll(x => x.IsActive == true);
+                if (count <= 0)
+                {
+                    return new ServiceResponse<int>
+                    {
+                        Data = 0,
+                        Message = "Successfully",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<int>
+                {
+                    Data = count,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<int>> CreateNewCategory(Category category)
         {
             try
@@ -105,6 +135,41 @@ namespace Service.Service
                     Message = "Successfully",
                     StatusCode = 204,
                     Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ServiceResponse<IEnumerable<CategoryDtoVerCus>>> GetCategoriesVerCusWithPagination(int page, int pageSize)
+        {
+            try
+            {
+                if (page <= 1)
+                {
+                    page = 1;
+                }
+                var lst = await _categoryRepository.GetAllWithPagination(x => x.IsActive == true, null, x => x.Id, true, page, pageSize);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<CategoryDtoVerCus>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<CategoryDtoVerCus>>
+                    {
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<CategoryDtoVerCus>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
                 };
             }
             catch (Exception ex)
