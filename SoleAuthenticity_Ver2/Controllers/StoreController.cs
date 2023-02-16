@@ -55,6 +55,59 @@ namespace SoleAuthenticity_Ver2.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+
+        [HttpGet("cus", Name = "GetStoresVerCus")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<StoreDtoVerCus>>>> GetStoresVerCus()
+        {
+            try
+            {
+                var res = await _storeService.GetStoresVerCus();
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("cus/pagination", Name = "GetStoresVerCusWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<StoreDtoVerCus>>>> GetStoresVerCusWithPagination([FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _storeService.GetStoresVerCusWithPagination(page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("cus/pagination/count", Name = "CountStoresVerCusWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountStoresVerCusWithPagination()
+        {
+            try
+            {
+                var res = await _storeService.CountStoresVerCusWithPagination();
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
         [HttpGet("store/{id}", Name = "GetStoreById")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

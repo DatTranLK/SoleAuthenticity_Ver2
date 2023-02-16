@@ -11,6 +11,9 @@ namespace Service.IService
     public interface IStoreService
     {
         Task<ServiceResponse<IEnumerable<StoreDto>>> GetStoresWithPagination(int page, int pageSize);
+        Task<ServiceResponse<IEnumerable<StoreDtoVerCus>>> GetStoresVerCus();
+        Task<ServiceResponse<IEnumerable<StoreDtoVerCus>>> GetStoresVerCusWithPagination(int page, int pageSize);
+        Task<ServiceResponse<int>> CountStoresVerCusWithPagination();
         Task<ServiceResponse<StoreDto>> GetStoreById(int id);
         Task<ServiceResponse<int>> CountStores();
         Task<ServiceResponse<string>> DisableOrEnableStore(int id);
