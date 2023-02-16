@@ -71,7 +71,10 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 //firebase auth
 FirebaseApp.Create(new AppOptions
 {
-    Credential = GoogleCredential.FromFile(@"..\Firebase\soleauthenticity-8f48f-firebase-adminsdk-zh8ss-595253ea9b.json")
+    /*    Credential = GoogleCredential.FromFile(@"..\SoleAuthenticity_Ver2\Firebase\soleauthenticity-8f48f-firebase-adminsdk-zh8ss-595253ea9b.json")
+    */
+    Credential = GoogleCredential.FromFile(@"C:\home\site\wwwroot\Firebase\soleauthenticity-8f48f-firebase-adminsdk-zh8ss-595253ea9b.json")
+
 }); ;
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
