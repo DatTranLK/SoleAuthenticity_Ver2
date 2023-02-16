@@ -38,6 +38,23 @@ namespace SoleAuthenticity_Ver2.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+        [HttpGet("cus", Name = "GetBrandsVerCus")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<BrandDtoVerCus>>>> GetBrandsVerCus()
+        {
+            try
+            {
+                var res = await _brandservice.GetBrandsVerCus();
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
         [HttpGet("brand/{id}", Name = "GetBrandById")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
