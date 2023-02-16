@@ -179,6 +179,37 @@ namespace Service.Service
             }
         }
 
+        public async Task<ServiceResponse<IEnumerable<BrandDtoVerCus>>> GetBrandsVerCus()
+        {
+            try
+            {
+                var lst = await _brandRepository.GetAllWithCondition(x => x.IsActive == true, null, null, true);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<BrandDtoVerCus>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<BrandDtoVerCus>>
+                    { 
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<BrandDtoVerCus>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<Brand>> UpdateBrand(int id, Brand brand)
         {
             try
