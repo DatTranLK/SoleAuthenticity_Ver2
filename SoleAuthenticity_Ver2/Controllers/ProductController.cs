@@ -55,6 +55,77 @@ namespace SoleAuthenticity_Ver2.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+
+        [HttpGet("store/{storeId}", Name = "GetProductsInCusByStoreIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<ProductShowDto>>>> GetProductsInCusByStoreIdWithPagination(int storeId, [FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _productService.GetProductsInCusByStoreIdWithPagination(storeId, page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("store/{storeId}/count", Name = "CountProductsInCusByStoreIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountProductsInCusByStoreIdWithPagination(int storeId)
+        {
+            try
+            {
+                var res = await _productService.CountProductsInCusByStoreIdWithPagination(storeId);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+        [HttpGet("brand/{brandId}", Name = "GetProductsInCusByBrandIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<ProductShowDto>>>> GetProductsInCusByBrandIdWithPagination(int brandId, [FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _productService.GetProductsInCusByBrandIdWithPagination(brandId, page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("brand/{brandId}/count", Name = "CountProductsInCusByBrandIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountProductsInCusByBrandIdWithPagination(int brandId)
+        {
+            try
+            {
+                var res = await _productService.CountProductsInCusByBrandIdWithPagination(brandId);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
         [HttpGet("product/{id}", Name = "GetProductById")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
