@@ -32,6 +32,7 @@ namespace Service.Mapping
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CategoryDtoVerCus>().ReverseMap();
             CreateMap<Store, StoreDto>().ReverseMap();
+            CreateMap<Store, StoreDtoVerCus>().ReverseMap();
             CreateMap<New, NewDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Size, SizeDto>().ReverseMap();

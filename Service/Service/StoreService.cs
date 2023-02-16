@@ -52,6 +52,36 @@ namespace Service.Service
             }
         }
 
+        public async Task<ServiceResponse<int>> CountStoresVerCusWithPagination()
+        {
+            try
+            {
+                var count = await _storeRepository.CountAll(x => x.IsActive == true);
+                if (count <= 0)
+                {
+                    return new ServiceResponse<int>
+                    {
+                        Data = 0,
+                        Message = "Successfully",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<int>
+                {
+                    Data = count,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<int>> CreateNewStore(Store store)
         {
             try
@@ -131,6 +161,72 @@ namespace Service.Service
                 return new ServiceResponse<StoreDto>
                 {
                     Data = storeDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ServiceResponse<IEnumerable<StoreDtoVerCus>>> GetStoresVerCus()
+        {
+            try
+            {
+                var lst = await _storeRepository.GetAllWithCondition(x => x.IsActive == true, null, x => x.Id, true);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<StoreDtoVerCus>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<StoreDtoVerCus>>
+                    { 
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<StoreDtoVerCus>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ServiceResponse<IEnumerable<StoreDtoVerCus>>> GetStoresVerCusWithPagination(int page, int pageSize)
+        {
+            try
+            {
+                if (page <= 1)
+                {
+                    page = 1;
+                }
+                var lst = await _storeRepository.GetAllWithPagination(x => x.IsActive == true, null, x => x.Id, true, page, pageSize);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<StoreDtoVerCus>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<StoreDtoVerCus>>
+                    {
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<StoreDtoVerCus>>
+                {
+                    Data = lstDto,
                     Message = "Successfully",
                     Success = true,
                     StatusCode = 200
