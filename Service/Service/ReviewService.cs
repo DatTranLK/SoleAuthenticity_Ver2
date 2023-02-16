@@ -160,6 +160,37 @@ namespace Service.Service
             }
         }
 
+        public async Task<ServiceResponse<IEnumerable<ReviewDtoVerCusHomePage>>> GetReviewsVerCusInHomepage()
+        {
+            try
+            {
+                var lst = await _reviewRepository.GetAllWithCondition(x => x.IsActive == true, null, x => x.ProductId, true);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<ReviewDtoVerCusHomePage>>(lst);
+                if (lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<ReviewDtoVerCusHomePage>>
+                    { 
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<ReviewDtoVerCusHomePage>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<IEnumerable<ReviewDto>>> GetReviewsWithPagination(int page, int pageSize)
         {
             try

@@ -11,6 +11,7 @@ namespace Service.IService
     public interface IReviewService
     {
         Task<ServiceResponse<IEnumerable<ReviewDto>>> GetReviewsWithPagination(int page, int pageSize);
+        Task<ServiceResponse<IEnumerable<ReviewDtoVerCusHomePage>>> GetReviewsVerCusInHomepage();
         Task<ServiceResponse<ReviewDto>> GetReviewById(int productId);
         Task<ServiceResponse<int>> CountAll();
         Task<ServiceResponse<string>> DisableOrEnableReview(int productId);
