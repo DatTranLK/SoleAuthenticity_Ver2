@@ -283,7 +283,11 @@ namespace Service.Service
         {
             try
             {
-                var shoeCheck = await _shoeCheckRepository.GetById(id);
+                List<Expression<Func<ShoeCheck, object>>> includes = new List<Expression<Func<ShoeCheck, object>>>
+                { 
+                    x => x.Customer
+                };
+                var shoeCheck = await _shoeCheckRepository.GetByWithCondition(x => x.Id == id, includes, true);
                 var _mapper = config.CreateMapper();
                 var shoeCheckDto = _mapper.Map<ShoeCheckDtoForAdmin>(shoeCheck);
                 if (shoeCheck == null)
