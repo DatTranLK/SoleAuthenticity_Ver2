@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'soleauthenticity'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F49C817D5F074C1E96DFB22BBCDBAF31 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4C3403647BEB4ADA89BAF31E4D6FEED9 }}
           package: .
