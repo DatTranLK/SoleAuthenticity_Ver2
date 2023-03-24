@@ -42,5 +42,9 @@ namespace Service.IService
         //Products from brand
         Task<ServiceResponse<IEnumerable<ProductShowDto>>> GetProductsInCusByBrandIdWithPagination(int brandId, int page, int pageSize);
         Task<ServiceResponse<int>> CountProductsInCusByBrandIdWithPagination(int brandId);
+
+        //Products from category
+        Task<ServiceResponse<IEnumerable<ProductShowDto>>> GetProductsInCusByCategoryIdWithPagination(int categoryId, int page, int pageSize);
+        Task<ServiceResponse<int>> CountProductsInCusByCategoryIdWithPagination(int categoryId);
     }
 }
