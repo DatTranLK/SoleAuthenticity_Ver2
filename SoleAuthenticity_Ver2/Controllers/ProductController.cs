@@ -126,6 +126,41 @@ namespace SoleAuthenticity_Ver2.Controllers
             }
         }
 
+        [HttpGet("category/{cateId}", Name = "GetProductsInCusByCategoryIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<ProductShowDto>>>> GetProductsInCusByCategoryIdWithPagination(int cateId, [FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _productService.GetProductsInCusByCategoryIdWithPagination(cateId, page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("category/{cateId}/count", Name = "CountProductsInCusByCategoryIdWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountProductsInCusByCategoryIdWithPagination(int cateId)
+        {
+            try
+            {
+                var res = await _productService.CountProductsInCusByCategoryIdWithPagination(cateId);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
         [HttpGet("product/{id}", Name = "GetProductById")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
