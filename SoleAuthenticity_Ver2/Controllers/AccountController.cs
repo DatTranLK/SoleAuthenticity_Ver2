@@ -25,7 +25,7 @@ namespace SoleAuthenticity_Ver2.Controllers
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<ServiceResponse<IEnumerable<AccountDto>>>> GetAccounts([FromQuery] int page, [FromQuery] int pageSize)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<AccountDto>>>> GetAccounts([FromQuery]int page, [FromQuery]int pageSize)
         {
             try
             {

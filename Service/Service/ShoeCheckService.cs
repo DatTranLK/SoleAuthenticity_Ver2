@@ -210,6 +210,36 @@ namespace Service.Service
             }
         }
 
+        public async Task<ServiceResponse<int>> CountShoeChecksInUIMobileWithPagination()
+        {
+            try
+            {
+                var count = await _shoeCheckRepository.CountAll(x => x.StatusChecking == "CHECKED" && x.IsActive == true);
+                if(count <= 0)
+                {
+                    return new ServiceResponse<int>
+                    {
+                        Data = 0,
+                        Message = "Successfully",
+                        StatusCode = 200,
+                        Success = true
+                    };
+                }
+                return new ServiceResponse<int>
+                {
+                    Data = count,
+                    Message = "Successfully",
+                    StatusCode = 200,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<ServiceResponse<int>> CreateNewShoeCheck(CreateShoeCheckDto createShoeCheckDto)
         {
             try
@@ -456,6 +486,45 @@ namespace Service.Service
                     };
                 }
                 return new ServiceResponse<IEnumerable<ShoeCheckDtoForStaff>>
+                {
+                    Data = lstDto,
+                    Message = "Successfully",
+                    Success = true,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ServiceResponse<IEnumerable<ShoeCheckDtoForMobile>>> GetShoeChecksInUIMobileWithPagination(int page, int pageSize)
+        {
+            try
+            {
+                if(page <= 0)
+                {
+                    page = 1;
+                }
+                List<Expression<Func<ShoeCheck, object>>> includes = new List<Expression<Func<ShoeCheck, object>>>
+                { 
+                    x => x.ShoeCheckImages
+                };
+                var lst = await _shoeCheckRepository.GetAllWithPagination(x => x.StatusChecking == "CHECKED" && x.IsActive == true, includes, x => x.Id, true,page, pageSize);
+                var _mapper = config.CreateMapper();
+                var lstDto = _mapper.Map<IEnumerable<ShoeCheckDtoForMobile>>(lst);
+                if(lst.Count() <= 0)
+                {
+                    return new ServiceResponse<IEnumerable<ShoeCheckDtoForMobile>>
+                    {
+                        Message = "No rows",
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                return new ServiceResponse<IEnumerable<ShoeCheckDtoForMobile>>
                 {
                     Data = lstDto,
                     Message = "Successfully",

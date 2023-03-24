@@ -21,6 +21,40 @@ namespace SoleAuthenticity_Ver2.Controllers
         {
             _shoeCheckService = shoeCheckService;
         }
+        [HttpGet("mobile/shoe-checks", Name = "GetShoeChecksInUIMobileWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<ShoeCheckDtoForMobile>>>> GetShoeChecksInUIMobileWithPagination([FromQuery] int page, [FromQuery] int pageSize)
+        {
+            try
+            {
+                var res = await _shoeCheckService.GetShoeChecksInUIMobileWithPagination(page, pageSize);
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+        [HttpGet("mobile/shoe-checks/count", Name = "CountShoeChecksInUIMobileWithPagination")]
+        [Produces("application/json")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ServiceResponse<int>>> CountShoeChecksInUIMobileWithPagination()
+        {
+            try
+            {
+                var res = await _shoeCheckService.CountShoeChecksInUIMobileWithPagination();
+                return StatusCode((int)res.StatusCode, res);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
         [HttpGet("admin", Name = "GetShoeChecksForAdmin")]
         [Produces("application/json")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

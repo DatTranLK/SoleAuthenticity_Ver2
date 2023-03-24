@@ -62,6 +62,7 @@ namespace Service.Mapping
                 .ReverseMap();
             CreateMap<Product, ProductShowDto>().ForMember(dto => dto.ImgPath, act => act.MapFrom(obj => obj.ProductImages.FirstOrDefault().ImgPath));
             CreateMap<ShoeCheck, CreateShoeCheckDto>().ReverseMap();
+            CreateMap<ShoeCheck, ShoeCheckDtoForMobile>().ForMember(dto => dto.ImgPath, act => act.MapFrom(obj => obj.ShoeCheckImages.FirstOrDefault().ImgPath)).ReverseMap();
             CreateMap<ShoeCheckImage, ShoeCheckImageDto>().ReverseMap();
         }
     }
