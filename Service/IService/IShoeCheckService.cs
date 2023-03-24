@@ -23,6 +23,10 @@ namespace Service.IService
         Task<ServiceResponse<int>> CountForStaff(int staffId);
         Task<ServiceResponse<ShoeCheckDtoForStaff>> GetShoeCheckByIdForStaff(int id);
 
+        // GetForMobile
+        Task<ServiceResponse<IEnumerable<ShoeCheckDtoForMobile>>> GetShoeChecksInUIMobileWithPagination(int page, int pageSize);
+        Task<ServiceResponse<int>> CountShoeChecksInUIMobileWithPagination();
+
         Task<ServiceResponse<string>> DisableOrEnableShoeCheck(int id);
         Task<ServiceResponse<int>> CreateNewShoeCheck(CreateShoeCheckDto createShoeCheckDto);
         Task<ServiceResponse<string>> ChangeStatusToChecking(int id);
