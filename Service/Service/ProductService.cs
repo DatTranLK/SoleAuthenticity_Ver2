@@ -785,7 +785,7 @@ namespace Service.Service
                 }
                 if (!string.IsNullOrEmpty(product.Name))
                 {
-                    checkExist.Code = product.Name;
+                    checkExist.Name = product.Name;
                 }
                 if (!string.IsNullOrEmpty(product.AmountInStore.ToString()))
                 {
