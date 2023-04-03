@@ -15,6 +15,7 @@ namespace Entity.Models
         public string? Name { get; set; }
         public string? Avatar { get; set; }
         public bool? IsActive { get; set; }
+
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public virtual ICollection<Product> Products { get; set; }
     }

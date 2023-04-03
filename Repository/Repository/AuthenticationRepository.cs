@@ -15,10 +15,10 @@ namespace Repository.Repository
 {
     public class AuthenticationRepository : GenericRepository<Account>, IAuthenticationRepository
     {
-        private readonly db_a947e4_soleauthenticitydbContext _dbContext;
+        private readonly db_a971f8_soleauthenticityContext _dbContext;
         private readonly IConfiguration _configuration;
 
-        public AuthenticationRepository(db_a947e4_soleauthenticitydbContext dbContext, IConfiguration configuration) : base(dbContext)
+        public AuthenticationRepository(db_a971f8_soleauthenticityContext dbContext, IConfiguration configuration) : base(dbContext)
         {
             _dbContext = dbContext;
             _configuration = configuration;

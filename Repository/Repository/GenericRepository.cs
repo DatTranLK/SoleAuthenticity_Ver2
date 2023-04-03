@@ -12,9 +12,9 @@ namespace Repository.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly db_a947e4_soleauthenticitydbContext _dbContext;
+        private readonly db_a971f8_soleauthenticityContext _dbContext;
 
-        public GenericRepository(db_a947e4_soleauthenticitydbContext dbContext)
+        public GenericRepository(db_a971f8_soleauthenticityContext dbContext)
         {
             _dbContext = dbContext;
         }

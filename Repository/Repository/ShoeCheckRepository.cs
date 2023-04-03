@@ -10,9 +10,9 @@ namespace Repository.Repository
 {
     public class ShoeCheckRepository : GenericRepository<ShoeCheck>, IShoeCheckRepository
     {
-        private readonly db_a947e4_soleauthenticitydbContext _dbContext;
+        private readonly db_a971f8_soleauthenticityContext _dbContext;
 
-        public ShoeCheckRepository(db_a947e4_soleauthenticitydbContext dbContext) : base(dbContext)
+        public ShoeCheckRepository(db_a971f8_soleauthenticityContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
