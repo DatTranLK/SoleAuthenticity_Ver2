@@ -10,9 +10,9 @@ namespace Repository.Repository
 {
     public class NewRepository : GenericRepository<New>, INewRepository
     {
-        private readonly db_a947e4_soleauthenticitydbContext _dbContext;
+        private readonly db_a971f8_soleauthenticityContext _dbContext;
 
-        public NewRepository(db_a947e4_soleauthenticitydbContext dbContext) : base(dbContext)
+        public NewRepository(db_a971f8_soleauthenticityContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }

@@ -6,13 +6,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace Entity.Models
 {
-    public partial class db_a947e4_soleauthenticitydbContext : DbContext
+    public partial class db_a971f8_soleauthenticityContext : DbContext
     {
-        public db_a947e4_soleauthenticitydbContext()
+        public db_a971f8_soleauthenticityContext()
         {
         }
 
-        public db_a947e4_soleauthenticitydbContext(DbContextOptions<db_a947e4_soleauthenticitydbContext> options)
+        public db_a971f8_soleauthenticityContext(DbContextOptions<db_a971f8_soleauthenticityContext> options)
             : base(options)
         {
         }

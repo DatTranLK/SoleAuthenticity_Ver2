@@ -34,6 +34,7 @@ namespace Entity.Models
         public virtual Category? Category { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public virtual RequestSellSecondHand? RequestSecondHand { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public virtual Store? Store { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public virtual Review? Review { get; set; }

@@ -10,9 +10,9 @@ namespace Repository.Repository
 {
     public class AccountRepository : GenericRepository<Account>, IAccountRepository
     {
-        private readonly db_a947e4_soleauthenticitydbContext _dbContext;
+        private readonly db_a971f8_soleauthenticityContext _dbContext;
 
-        public AccountRepository(db_a947e4_soleauthenticitydbContext dbContext) : base(dbContext)
+        public AccountRepository(db_a971f8_soleauthenticityContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
