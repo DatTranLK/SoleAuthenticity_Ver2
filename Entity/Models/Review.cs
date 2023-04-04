@@ -19,10 +19,10 @@ namespace Entity.Models
         public string? Elements { get; set; }
         public bool? IsActive { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public virtual Product Product { get; set; } = null!;
+        public virtual Product? Product { get; set; } = null!;
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public virtual Account? Staff { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }
