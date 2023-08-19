@@ -48,29 +48,24 @@ Provide step-by-step instructions on how to install and set up your project:
 
 **1. Choose API**
 <div align="center">
-  <img src="https://imgur.com/PREPXO7.png" width="25%"></img>
+  <img src="https://imgur.com/PREPXO7.png"></img>
 </div>
 
 **2. Enter pageNo and pageSize**
 <div align="center">
-  <img src="https://imgur.com/DTRy3FJ.png" width="25%"></img>
+  <img src="https://imgur.com/DTRy3FJ.png"></img>
 </div>
 
 **3. Click Execute**
 <div align="center">
-  <img src="https://imgur.com/wdJlzJn.png" width="25%"></img>
+  <img src="https://imgur.com/wdJlzJn.png"></img>
 </div>
 
 **4. See the result in the response body**
 <div align="center">
-  <img src="https://imgur.com/wdJlzJn.png" width="25%"></img>
+  <img src="https://imgur.com/wdJlzJn.png"></img>
 </div>
 
-
-
-## License
-
-Specify the license under which your project is distributed. For example, MIT, Apache, GPL, etc.
 
 ## Contact Information
 
