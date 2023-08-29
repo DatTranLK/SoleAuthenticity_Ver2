@@ -14,7 +14,7 @@
 - [Contact Information](#contact-information)
 ## Introduction
 
-- In the fast-paced realm of shoe fashion, ShoeHub stands as a cutting-edge solution tailored for shoe enthusiasts, sellers, and fashion-forward individuals. Our platform not only facilitates the buying and selling of shoes but also empowers users to ensure the authenticity of the shoes they're dealing with
+- In the fast-paced realm of shoe fashion, SoleAuthenticity stands as a cutting-edge solution tailored for shoe enthusiasts, sellers, and fashion-forward individuals. Our platform not only facilitates the buying and selling of shoes but also empowers users to ensure the authenticity of the shoes they're dealing with
 
 ## Features
 
