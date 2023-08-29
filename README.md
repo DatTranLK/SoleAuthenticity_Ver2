@@ -63,7 +63,7 @@ Provide step-by-step instructions on how to install and set up your project:
 
 **4. See the result in the response body**
 <div align="center">
-  <img src="https://imgur.com/wdJlzJn.png"></img>
+  <img src="https://i.imgur.com/nlTZ6oz.png"></img>
 </div>
 
 
